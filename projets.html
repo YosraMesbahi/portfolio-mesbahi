@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets - Yosra Mesbahi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div>
+            <a href="index.html" class="logo"> Yosra Mesbahi</a>
+        </div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="index.html#apropos">À propos</a></li>
+                <li><a href="projets.html">Projets</a></li>
+                <li><a href="index.html#competences">Compétences</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <nav id="hamburger-nav">
+        <div>
+            <a href="index.html" class="logo"> Yosra Mesbahi</a>
+        </div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="index.html#apropos" onclick="toggleMenu()">À propos</a></li>
+                <li><a href="index.html#competences" onclick="toggleMenu()">Compétences</a></li>
+                <li><a href="projets.html" onclick="toggleMenu()">Projets</a></li>
+                <li><a href="index.html#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <section id="all-projets">
+        <p class="section__text__p1">Découvrez</p>
+        <h1 class="title">L'ensemble de mes projets</h1>
+        
+        <div class="experience-details-container">
+            <div class="about-containers" id="all-projects-grid">
+                
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/Projet-1.png" alt="project 1" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Site web pour le BUT MMI</h2>
+                    <p class="project-description"> HTML - CSS - PHP </p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/YosraMesbahi/SAE-105.git'">GitHub</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://mesbahi.alwaysdata.net/Semestre-1%20/SAE-105/SITE-WEB-BUT-MMI/index.php'">Live Demo </button>
+                    </div>
+                </div>
+
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/Projet-2.png" alt="project 2" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Création d'un CRUD</h2>
+                    <p class="project-description"> HTML - CSS - PHP - MySQL </p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/YosraMesbahi/SAE-203.git'">GitHub</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://glowcom.alwaysdata.net/SAE-203/DanYellow-cours-main-integration/code/index.php'">Live Demo </button>
+                    </div>
+                </div>
+
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/Projet-3.png" alt="project 3" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Dynamisation d'un site web</h2>
+                    <p class="project-description"> HTML - PHP </p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/YosraMesbahi/Mamba.git'">GitHub</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://mesbahi.alwaysdata.net/Semestre-3/Atelier-php/Mamba/index.php'">Live Demo </button>
+                    </div>
+                </div>
+                
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/Projet-4.png" alt="project 4" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Site wordpress Simaya</h2>
+                    <p class="project-description"> Wordpress - Elementor </p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Voir la maquette</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Documentation</button>
+                    </div>
+                </div>
+                
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/avenir.png" alt="project 5" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Visualisation de données</h2>
+                    <p class="project-description">HTML - CSS - JS - PHP - MySQL </p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Voir la maquette</button>
+                    </div>
+                </div>
+
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="./assets/avenir.png" alt="project 5" class="project-img">
+                    </div>
+                    <h2 class="experience-sub-title project-title">Maquettes de site sur Figma</h2>
+                    <p class="project-description">Figma</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Voir la maquette</button>
+                    </div>
+                </div>
+                </div>
+        </div>
+        </section>
+       <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>Copyright © 2025 Yosra Mesbahi. Tous droits réservés</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

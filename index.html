@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div>
+            <a href="index.html" class="logo"> Yosra Mesbahi</a>
+        </div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav id="hamburger-nav">
+        <div>
+            <a href="index.html" class="logo"> Yosra Mesbahi</a>
+        </div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="#apropos" onclick="toggleMenu()">À propos</a></li>
+                <li><a href="#projets" onclick="toggleMenu()">Projets</a></li>
+                <li><a href="#competences" onclick="toggleMenu()">Compétences</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+    </nav>
+    <section id="profile">
+        <div class="section__text">
+            <p class="section__text__p1">Bonjour, je suis</p>
+            <h1 class="title">Yosra MESBAHI</h1>
+            <p class="section__text__p2">Étudiante en BUT MMI</p>
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="window.open('./assets/resume-example.pdf')">Télécharger mon CV</button>
+                <button class="btn btn-color-1" onclick="location.href='./#contact'">Me contacter</button>
+            </div>
+            <div id="socials-container">
+                <img src="./assets/linkedin.png" alt="Mon profil linkedin" class="icon" onclick="location.href='https://www.linkedin.com/in/yosra-mesbahi/'">
+                <img src="./assets/github.png" alt="Mon profil github" class="icon" onclick="location.href='https://github.com/YosraMesbahi'">
+            </div>
+        </div>
+    </section>
+    <section id="apropos">
+        <p class="section__text__p1">Quelques informations</p>
+        <h1 class="title">À propos de moi</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="./assets/about-pic.png" alt="photo de profil" class="about-pic">
+            </div>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="experience-icon" class="icon">
+                        <h3>BUT MMI</h3>
+                        <p>IUT de Cergy-Pontoise <br> 2024-2027 </p>
+                    </div>
+                    <div class="details-container">
+                         <img src="./assets/experience.png" alt="experience-icon" class="icon">
+                        <h3>Baccalauréat général</h3>
+                        <p>Lycée Galilée<br> 2021-2024</p>
+                    </div>
+                </div>
+                <div class="text-container">
+                    <p>Je m'appelle Yosra, et je suis actuellement en 2ème année de BUT MMI à l'Université de CY Paris Université.
+                    Vous trouverez dans mon portfolio une présentation de mes compétences ainsi que de mes projets universitaires et personnels.
+                    <br><br> Je suis activement à la recherche d'un <span class="bold">stage en développement web et/ou webdesign</span> à partir du 
+                    <span class="bold">13 avril 2026</span>, pour une <span class="bold">durée minimale de 10 semaines.</span></p>
+                </div>
+            </div>
+        </div>
+        <img src="./assets/arrow.png" alt="fleche" class="icon arrow" onclick="location.href='./#projets'">
+    </section>
+    <section id="projets">
+        <p class="section__text__p1">Parcourez</p>
+        <h1 class="title">Mes projets récents</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+            <div class="details-container color-container">
+                <div class="article-container">
+                    <img src="./assets/Projet-1.png" alt="project 1" class="project-img">
+                </div>
+                <h2 class="experience-sub-title project-title">Projet 1</h2>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/YosraMesbahi/SAE-105.git'">GitHub</button>
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://mesbahi.alwaysdata.net/Semestre-1%20/SAE-105/SITE-WEB-BUT-MMI/index.php'">Live Demo </button>
+                </div>
+            </div>
+            <div class="details-container color-container">
+                <div class="article-container">
+                    <img src="./assets/Projet-2.png" alt="project 2" class="project-img">
+                </div>
+                <h2 class="experience-sub-title project-title">Projet 2</h2>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/YosraMesbahi/SAE-203.git'">GitHub</button>
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://glowcom.alwaysdata.net/SAE-203/DanYellow-cours-main-integration/code/index.php'">Live Demo </button>
+                </div>
+            </div>
+            <div class="details-container color-container">
+                <div class="article-container">
+                    <img src="./assets/Projet-3.png" alt="project 3" class="project-img">
+                </div>
+                <h2 class="experience-sub-title project-title">Projet 3</h2>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/YosraMesbahi/Mamba.git'">GitHub</button>
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://mesbahi.alwaysdata.net/Semestre-3/Atelier-php/Mamba/index.php'">Live Demo </button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <button id="voir-projet" class="btn btn-color-1" onclick="location.href='./projets.html'">Voir tous mes projets</button>
+          <img src="./assets/arrow.png" alt="fleche" class="icon arrow" onclick="location.href='./#competences'"> 
+    </section>
+    <section id="competences">
+        <p class="section__text__p1">Découvrez</p>
+        <h1 class="title">Mes compétences</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Développement Front-end</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>HTML</h3>
+                                <p>Experimenté</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>CSS</h3>
+                                <p>Experimenté</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>JavaScript</h3>
+                                <p>Intermédiaire</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>Tailwind CSS</h3>
+                                <p>Débutante</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>React</h3>
+                                <p>Débutante</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Développement Back-end</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>Python</h3>
+                                <p>Expérimenté</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>PHP</h3>
+                                <p>Expérimenté</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>MySQL</h3>
+                                <p>Expérimenté</p>
+                            </div>
+                        </article>
+                        <article>
+                            <img src="./assets/checkmark.png" alt="experience icon" class="icon">
+                            <div>
+                                <h3>Git et Github</h3>
+                                <p>Intermédiaire</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="./assets/arrow.png" alt="fleche" class="icon arrow" onclick="location.href='./#contact'"> 
+    </section>
+    <section id="contact">
+        <p class="section__text__p1">Comment me</p>
+        <h1 class="title">Contacter</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="email icon" class="icon contact-icon email-icon">
+                <p class="p-contact"><a href="mailto:yosra.mesbahipro@gmail.com">yosra.mesbahipro@gmail.com</a></p>
+
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="linkedin icon" class="icon contact-icon">
+                <p class="p-contact"><a href="https://www.linkedin.com/in/yosra-mesbahi">LinkedIn</a></p>
+
+            </div>
+        </div>
+    </section>
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>Copyright © 2025 Yosra Mesbahi. Tous droits réservés</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
