@@ -48,7 +48,7 @@
     --btn-padding: 1rem;
     
     /* Hauteurs sections */
-    --nav-height: 17vh;
+    --nav-height: 9vh;
     --section-height: 96vh;
     --profile-height: 83vh;
     --contact-height: 70vh;
@@ -78,6 +78,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
+    padding-top: var(--nav-height);
 }
 
 /* ============= TYPOGRAPHIE ============= */
@@ -126,6 +127,12 @@ nav {
     justify-content: space-around;
     align-items: center;
     height: var(--nav-height);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
@@ -318,6 +325,19 @@ article .icon {
     border: var(--border-width) var(--border-style) var(--color-white);
 }
 
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--color-border);
+    color: var(--color-white);
+    border-color: var(--color-border);
+}
+
+.btn.disabled:hover {
+    background: var(--color-border);
+    border-color: var(--color-border);
+}
+
 /* ============= ABOUT SECTION ============= */
 #apropos {
     position: relative;
@@ -391,6 +411,9 @@ article {
 /* ============= PROJECTS SECTION ============= */
 #projets {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .color-container {
@@ -414,12 +437,7 @@ article {
     border-color: var(--color-border);
 }
 
-#projets a {
-    display: block;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+#voir-projet {
     margin-top: var(--margin-md);
     margin-bottom: var(--margin-md);
 }
