@@ -527,181 +527,164 @@ footer nav {
     height: fit-content;
 }
 
-/* ============= MODALES PROJETS ============= */
+/* ============= SYSTÈME DE MODALES ============= */
 
-/* Overlay (fond sombre) */
+/* Container principal */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: 2000;
+  z-index: 9999;
   
   /* Caché par défaut */
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  pointer-events: none;
   
-  /* Centrer le contenu */
+  /* Transitions fluides */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  
+  /* Centrage */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
+  
+  /* Scroll interne si contenu trop long */
   overflow-y: auto;
 }
 
-/* Quand on clique sur le lien #modal-projet-X */
-.modal-overlay:target {
+/* État ouvert */
+.modal-overlay.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
-/* Boîte de la modale */
+/* Backdrop (fond sombre cliquable) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: -1;
+  cursor: pointer;
+}
+
+/* Boîte modale */
 .modal-box {
   background-color: var(--color-white);
   border-radius: var(--border-radius-md);
   max-width: 800px;
   width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
-  padding: 2rem;
-  transform: translateY(20px);
-  transition: transform 0.3s ease;
+  padding: 2.5rem;
+  
+  /* Animation d'entrée */
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Ombre portée */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  
+  /* Focus visible */
+  outline: none;
 }
 
-.modal-overlay:target .modal-box {
-  transform: translateY(0);
+.modal-overlay.active .modal-box {
+  transform: scale(1) translateY(0);
 }
 
-/* Bouton fermer (X) */
+/* Bouton fermer amélioré */
 .modal-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  
+  /* Reset styles button */
+  background: var(--color-bg-light);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  
+  font-size: 1.8rem;
   color: var(--color-text);
-  text-decoration: none;
-  width: 40px;
-  height: 40px;
+  cursor: pointer;
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background-color: var(--color-bg-light);
-  transition: var(--transition-fast);
+  
+  transition: all 0.3s ease;
+  
+  /* Accessibilité */
+  z-index: 10;
 }
 
-.modal-close:hover {
+.modal-close:hover,
+.modal-close:focus {
   background-color: var(--color-primary);
+  border-color: var(--color-primary);
   color: var(--color-white);
   transform: rotate(90deg);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-/* Contenu de la modale */
-.modal-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
+/* Image modale */
 .modal-img {
   width: 100%;
+  max-height: 400px;
+  object-fit: cover;
   border-radius: var(--border-radius-sm);
+  margin-bottom: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.modal-content-wrapper h2 {
-  color: var(--color-black);
-  font-size: 1.8rem;
-  border-bottom: 3px solid var(--color-primary);
-  padding-bottom: 0.5rem;
-  margin: 0;
+/* Gestion du scroll body quand modale ouverte */
+body.modal-open {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width, 0);
 }
 
-.modal-text {
-  color: var(--color-text);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.modal-tech,
-.modal-competences {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.modal-tech strong,
-.modal-competences strong {
-  color: var(--color-dark);
-  font-size: 1.1rem;
-}
-
-.tech-badge {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
-  background-color: var(--color-bg-light);
-  border: 2px solid var(--color-border);
-  border-radius: var(--border-radius-md);
-  font-size: 0.9rem;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  color: var(--color-dark);
-  font-weight: 500;
-}
-
-.modal-competences ul {
-  margin: 0;
-  padding-left: 1.5rem;
-  list-style: none;
-}
-
-.modal-competences li {
-  color: var(--color-text);
-  line-height: 1.8;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.modal-competences li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--color-primary);
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.modal-buttons {
-  display: flex;
-  gap: var(--gap-md);
-  margin-top: var(--gap-md);
-}
-
-.modal-buttons .btn {
-  flex: 1;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
-/* Responsive modales */
-@media screen and (max-width: 600px) {
+/* Responsive */
+@media screen and (max-width: 768px) {
   .modal-box {
     padding: 1.5rem;
-  }
-  
-  .modal-content-wrapper h2 {
-    font-size: 1.4rem;
-  }
-  
-  .modal-buttons {
-    flex-direction: column;
+    max-height: 95vh;
   }
   
   .modal-close {
     top: 0.5rem;
     right: 0.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .modal-img {
+    max-height: 250px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal-box {
+    padding: 1rem;
+  }
+  
+  .modal-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
