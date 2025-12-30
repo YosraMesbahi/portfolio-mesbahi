@@ -20,8 +20,7 @@ const projectsData = {
       "Gestion de projet et respect des délais"
     ],
     github: "https://github.com/YosraMesbahi/SAE-105.git",
-    demo: "https://mesbahi.alwaysdata.net/Semestre-1%20/SAE-105/SITE-WEB-BUT-MMI/index.php",
-    image: "./assets/Projet-1.png"
+    demo: "https://mesbahi.alwaysdata.net/Semestre-1%20/SAE-105/SITE-WEB-BUT-MMI/index.php"
   },
   2: {
     title: "Création d'un CRUD",
@@ -34,8 +33,7 @@ const projectsData = {
       "Architecture MVC et séparation des préoccupations"
     ],
     github: "https://github.com/YosraMesbahi/SAE-203.git",
-    demo: "https://glowcom.alwaysdata.net/SAE-203/DanYellow-cours-main-integration/code/index.php",
-    image: "./assets/Projet-2.png"
+    demo: "https://glowcom.alwaysdata.net/SAE-203/DanYellow-cours-main-integration/code/index.php"
   },
   3: {
     title: "Dynamisation d'un site web",
@@ -48,8 +46,7 @@ const projectsData = {
       "Documentation technique du projet"
     ],
     github: "https://github.com/YosraMesbahi/Mamba.git",
-    demo: "https://mesbahi.alwaysdata.net/Semestre-3/Atelier-php/Mamba/index.php",
-    image: "./assets/Projet-3.png"
+    demo: "https://mesbahi.alwaysdata.net/Semestre-3/Atelier-php/Mamba/index.php"
   },
   4: {
     title: "Site wordpress Simaya",
@@ -64,10 +61,36 @@ const projectsData = {
     ],
     github: null,
     demo: null,
-    image: "./assets/Projet-4.png",
     status: "en-cours"
+  },
+  5: {
+    title: "Visualisation de données",
+    description: "Projet en cours de développement axé sur la visualisation interactive de données. Utilisation de bibliothèques JavaScript modernes pour créer des graphiques et tableaux de bord dynamiques permettant d'analyser et de présenter des données complexes de manière claire et intuitive.",
+    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    skills: [
+      "Manipulation et traitement de données",
+      "Création de visualisations interactives",
+      "Développement front-end moderne",
+      "Intégration de bibliothèques JavaScript",
+      "Optimisation des performances avec de gros volumes de données"
+    ],
+    github: null,
+    demo: null
+  },
+  6: {
+    title: "Maquettes de site sur Figma",
+    description: "Collection de maquettes web réalisées sur Figma dans le cadre de projets universitaires et personnels. Focus sur l'UX/UI design et les tendances actuelles du web design. Ces maquettes reflètent ma démarche créative et ma capacité à conceptualiser des interfaces modernes et ergonomiques.",
+    technologies: ["Figma"],
+    skills: [
+      "Design d'interfaces utilisateur modernes",
+      "Prototypage interactif",
+      "Conception responsive mobile-first",
+      "Création de systèmes de design cohérents",
+      "Tests utilisateurs et itérations"
+    ],
+    github: null,
+    demo: null
   }
-  // Ajoutez les autres projets ici
 };
 
 // ============= CLASSE MODAL ============= 
@@ -80,7 +103,6 @@ class Modal {
     
     // Éléments de contenu
     this.elements = {
-      image: document.getElementById('modal-image'),
       title: document.getElementById('modal-title'),
       description: document.getElementById('modal-description'),
       techBadges: document.getElementById('modal-tech-badges'),
@@ -186,10 +208,6 @@ class Modal {
   }
   
   populateContent(project) {
-    // Image
-    this.elements.image.src = project.image;
-    this.elements.image.alt = `Capture d'écran du projet ${project.title}`;
-    
     // Titre
     this.elements.title.textContent = project.title;
     
@@ -207,7 +225,7 @@ class Modal {
       .join('');
     
     // Boutons GitHub et Demo
-    const buttonsContainer = this.elements.github.parentElement;
+    const buttonsContainer = document.querySelector('.modal-buttons');
     
     if (project.status === 'en-cours') {
       buttonsContainer.innerHTML = `
@@ -222,19 +240,33 @@ class Modal {
         </p>
       `;
     } else {
-      // Afficher les boutons normalement
+      // Réinitialiser le HTML pour afficher les boutons
+      buttonsContainer.innerHTML = `
+        <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-2">GitHub</a>
+        <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-1">Live Demo</a>
+      `;
+      
+      // Récupérer les nouveaux éléments (après innerHTML)
+      const githubBtn = document.getElementById('modal-github');
+      const demoBtn = document.getElementById('modal-demo');
+      
+      // Mettre à jour les références dans this.elements
+      this.elements.github = githubBtn;
+      this.elements.demo = demoBtn;
+      
+      // Gérer l'affichage des boutons
       if (project.github) {
-        this.elements.github.href = project.github;
-        this.elements.github.style.display = 'inline-block';
+        githubBtn.href = project.github;
+        githubBtn.style.display = 'inline-flex';
       } else {
-        this.elements.github.style.display = 'none';
+        githubBtn.style.display = 'none';
       }
       
       if (project.demo) {
-        this.elements.demo.href = project.demo;
-        this.elements.demo.style.display = 'inline-block';
+        demoBtn.href = project.demo;
+        demoBtn.style.display = 'inline-flex';
       } else {
-        this.elements.demo.style.display = 'none';
+        demoBtn.style.display = 'none';
       }
     }
   }
