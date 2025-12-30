@@ -1,10 +1,9 @@
-function toggleMenu(){
-    const menu = document.querySelector(".menu-links"); 
-    const icon = document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open"); 
-    icon.classList.toggle("open"); 
+function toggleMenu() {
+  const menu = document.querySelector(".menu-links");
+  const icon = document.querySelector(".hamburger-icon");
+  menu.classList.toggle("open");
+  icon.classList.toggle("open");
 }
-
 
 // ============= DONNÉES DES PROJETS ============= 
 // Centralisation des données pour faciliter la maintenance
@@ -12,6 +11,7 @@ const projectsData = {
   1: {
     title: "Site web pour le BUT MMI",
     description: "Ce projet universitaire m'a permis de réaliser un site web complet pour présenter la formation BUT MMI. J'ai développé toute l'interface en respectant les contraintes du cahier des charges, en mettant l'accent sur l'ergonomie et l'accessibilité.",
+    learnings: "Ce projet m'a permis de découvrir l'importance de la planification en amont. J'ai appris à structurer mon code de manière logique, à respecter les standards du web, et surtout à gérer mon temps efficacement pour livrer un projet complet dans les délais. La collaboration avec mes pairs m'a également enseigné l'importance de la communication dans un projet technique.",
     technologies: ["HTML", "CSS", "PHP"],
     skills: [
       "Conception d'interfaces web responsive",
@@ -25,6 +25,7 @@ const projectsData = {
   2: {
     title: "Création d'un CRUD",
     description: "Développement d'une application web complète avec système CRUD (Create, Read, Update, Delete). Ce projet m'a permis de maîtriser la manipulation de bases de données et la création d'interfaces d'administration robustes et sécurisées.",
+    learnings: "Ce projet a été un véritable tournant dans ma compréhension du développement back-end. J'ai appris à concevoir une base de données relationnelle cohérente, à sécuriser mes requêtes SQL contre les injections, et à structurer mon code selon l'architecture MVC. Les difficultés rencontrées lors du débogage m'ont enseigné la patience et l'importance des tests.",
     technologies: ["HTML", "CSS", "PHP", "MySQL"],
     skills: [
       "Conception et gestion de bases de données relationnelles",
@@ -38,6 +39,7 @@ const projectsData = {
   3: {
     title: "Dynamisation d'un site web",
     description: "Transformation d'un site statique en site dynamique. J'ai implémenté un système de templates et de gestion de contenu pour faciliter la maintenance et l'évolutivité du site. Ce projet m'a permis de comprendre l'importance de la modularité dans le développement web.",
+    learnings: "La refactorisation de code existant m'a appris à lire et comprendre du code que je n'avais pas écrit. J'ai découvert les avantages de la programmation modulaire et l'importance de créer des composants réutilisables. Ce projet m'a également sensibilisé à la notion de dette technique et à l'importance de documenter son code.",
     technologies: ["HTML", "PHP"],
     skills: [
       "Refactorisation de code HTML vers PHP",
@@ -51,6 +53,7 @@ const projectsData = {
   4: {
     title: "Site wordpress Simaya",
     description: "Conception et développement d'un site vitrine sur WordPress avec Elementor. Création d'une identité visuelle cohérente et d'une expérience utilisateur optimale pour ce projet client. J'ai travaillé sur l'ensemble du processus, de la maquette à la mise en ligne.",
+    learnings: "Travailler avec un vrai client m'a appris l'importance de l'écoute active et de la gestion des attentes. J'ai développé mes compétences en communication pour traduire des besoins non-techniques en solutions concrètes. Ce projet m'a également enseigné à être plus flexible et à gérer les retours et modifications tout en gardant une vision cohérente du projet.",
     technologies: ["WordPress", "Elementor"],
     skills: [
       "Maîtrise de WordPress et de son écosystème",
@@ -66,6 +69,7 @@ const projectsData = {
   5: {
     title: "Visualisation de données",
     description: "Projet en cours de développement axé sur la visualisation interactive de données. Utilisation de bibliothèques JavaScript modernes pour créer des graphiques et tableaux de bord dynamiques permettant d'analyser et de présenter des données complexes de manière claire et intuitive.",
+    learnings: "Ce projet me permet d'explorer l'intersection entre design et développement. J'apprends à transformer des données brutes en récits visuels compréhensibles, à choisir les bonnes représentations graphiques selon le message à faire passer, et à optimiser les performances pour gérer de gros volumes de données.",
     technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     skills: [
       "Manipulation et traitement de données",
@@ -80,6 +84,7 @@ const projectsData = {
   6: {
     title: "Maquettes de site sur Figma",
     description: "Collection de maquettes web réalisées sur Figma dans le cadre de projets universitaires et personnels. Focus sur l'UX/UI design et les tendances actuelles du web design. Ces maquettes reflètent ma démarche créative et ma capacité à conceptualiser des interfaces modernes et ergonomiques.",
+    learnings: "Le design m'a appris à penser 'utilisateur d'abord'. J'ai développé ma sensibilité aux détails visuels, à la hiérarchie de l'information et à l'importance de la cohérence dans une interface. Les tests utilisateurs m'ont montré que mes intuitions ne sont pas toujours justes et qu'il faut savoir remettre en question ses choix pour créer de meilleures expériences.",
     technologies: ["Figma"],
     skills: [
       "Design d'interfaces utilisateur modernes",
@@ -93,250 +98,99 @@ const projectsData = {
   }
 };
 
-// ============= CLASSE MODAL ============= 
-class Modal {
+
+
+// ============= CLASSE DE GESTION DE LA MODALE ============= 
+class ProjectModal {
   constructor() {
+    // Les éléments sont récupérés ici, APRES l'injection du HTML
     this.modal = document.getElementById('modal-container');
-    this.modalBox = this.modal.querySelector('.modal-box');
-    this.backdrop = this.modal.querySelector('.modal-backdrop');
     this.closeBtn = this.modal.querySelector('.modal-close');
-    
-    // Éléments de contenu
-    this.elements = {
-      title: document.getElementById('modal-title'),
-      description: document.getElementById('modal-description'),
-      techBadges: document.getElementById('modal-tech-badges'),
-      skillsList: document.getElementById('modal-skills-list'),
-      github: document.getElementById('modal-github'),
-      demo: document.getElementById('modal-demo')
-    };
-    
-    // État
-    this.isOpen = false;
-    this.currentProjectId = null;
-    this.focusableElements = [];
+    this.backdrop = this.modal.querySelector('.modal-backdrop');
     this.lastFocusedElement = null;
-    
-    // Initialisation
-    this.init();
+
+    this.initEvents();
   }
-  
-  init() {
-    // Événements de fermeture
+
+  initEvents() {
     this.closeBtn.addEventListener('click', () => this.close());
     this.backdrop.addEventListener('click', () => this.close());
     
-    // Fermeture avec ESC
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.isOpen) {
+      if (e.key === 'Escape' && this.modal.classList.contains('active')) {
         this.close();
       }
     });
-    
-    // Navigation clavier (Tab trap)
-    this.modal.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab' && this.isOpen) {
-        this.handleTabKey(e);
-      }
-    });
-    
-    // Calculer la largeur de scrollbar pour éviter le jump
-    this.calculateScrollbarWidth();
-    
-    // Événements sur tous les boutons "En savoir plus"
-    this.attachButtonEvents();
   }
-  
-  attachButtonEvents() {
-    const buttons = document.querySelectorAll('.open-modal');
-    buttons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const projectId = button.dataset.projectId;
-        this.open(projectId);
-      });
-    });
-  }
-  
+
   open(projectId) {
-    const project = projectsData[projectId];
-    
-    if (!project) {
-      console.error(`Projet ${projectId} introuvable`);
-      return;
-    }
-    
-    // Sauvegarder l'élément actuellement focus
+    const data = projectsData[projectId];
+    if (!data) return;
+
     this.lastFocusedElement = document.activeElement;
-    
-    // Remplir le contenu
-    this.populateContent(project);
-    
-    // Afficher la modale
+
+    // Remplissage des données
+    document.getElementById('modal-image').src = `./assets/project-${projectId}.png`;
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-description').textContent = data.description;
+    document.getElementById('modal-learnings').textContent = data.learnings;
+    document.getElementById('modal-github').href = data.github;
+    document.getElementById('modal-demo').href = data.demo;
+
+    // Badges technologies
+    const techContainer = document.getElementById('modal-tech-badges');
+    techContainer.innerHTML = data.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
+
+    // Liste des compétences
+    const skillsList = document.getElementById('modal-skills-list');
+    skillsList.innerHTML = data.skills.map(skill => `<li>${skill}</li>`).join('');
+
+    // Affichage
     this.modal.classList.add('active');
-    this.modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
     
-    // Définir le focus sur le premier élément focusable
-    this.setInitialFocus();
-    
-    // Mettre à jour l'état
-    this.isOpen = true;
-    this.currentProjectId = projectId;
-    
-    // Annoncer l'ouverture aux lecteurs d'écran
-    this.announceToScreenReader(`Modale ouverte : ${project.title}`);
-  }
-  
-  close() {
-    // Masquer la modale
-    this.modal.classList.remove('active');
-    this.modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
-    
-    // Restaurer le focus
-    if (this.lastFocusedElement) {
-      this.lastFocusedElement.focus();
-    }
-    
-    // Mettre à jour l'état
-    this.isOpen = false;
-    this.currentProjectId = null;
-    
-    // Annoncer la fermeture
-    this.announceToScreenReader('Modale fermée');
-  }
-  
-  populateContent(project) {
-    // Titre
-    this.elements.title.textContent = project.title;
-    
-    // Description
-    this.elements.description.textContent = project.description;
-    
-    // Technologies (badges)
-    this.elements.techBadges.innerHTML = project.technologies
-      .map(tech => `<span class="tech-badge">${tech}</span>`)
-      .join('');
-    
-    // Compétences (liste)
-    this.elements.skillsList.innerHTML = project.skills
-      .map(skill => `<li>${skill}</li>`)
-      .join('');
-    
-    // Boutons GitHub et Demo
-    const buttonsContainer = document.querySelector('.modal-buttons');
-    
-    if (project.status === 'en-cours') {
-      buttonsContainer.innerHTML = `
-        <p style="text-align: center; color: var(--color-text); margin: 0;">
-          <em>Projet en cours de finalisation</em>
-        </p>
-      `;
-    } else if (!project.github && !project.demo) {
-      buttonsContainer.innerHTML = `
-        <p style="text-align: center; color: var(--color-text); margin: 0;">
-          <em>Projet en cours de développement - Disponible prochainement</em>
-        </p>
-      `;
-    } else {
-      // Réinitialiser le HTML pour afficher les boutons
-      buttonsContainer.innerHTML = `
-        <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-2">GitHub</a>
-        <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-1">Live Demo</a>
-      `;
-      
-      // Récupérer les nouveaux éléments (après innerHTML)
-      const githubBtn = document.getElementById('modal-github');
-      const demoBtn = document.getElementById('modal-demo');
-      
-      // Mettre à jour les références dans this.elements
-      this.elements.github = githubBtn;
-      this.elements.demo = demoBtn;
-      
-      // Gérer l'affichage des boutons
-      if (project.github) {
-        githubBtn.href = project.github;
-        githubBtn.style.display = 'inline-flex';
-      } else {
-        githubBtn.style.display = 'none';
-      }
-      
-      if (project.demo) {
-        demoBtn.href = project.demo;
-        demoBtn.style.display = 'inline-flex';
-      } else {
-        demoBtn.style.display = 'none';
-      }
-    }
-  }
-  
-  // ===== ACCESSIBILITÉ =====
-  
-  setInitialFocus() {
-    // Récupérer tous les éléments focusables
-    this.focusableElements = this.modalBox.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    
-    if (this.focusableElements.length > 0) {
-      // Focus sur le bouton fermer
-      this.closeBtn.focus();
-    }
-  }
-  
-  handleTabKey(e) {
-    const firstElement = this.focusableElements[0];
-    const lastElement = this.focusableElements[this.focusableElements.length - 1];
-    
-    // Shift + Tab sur le premier élément : aller au dernier
-    if (e.shiftKey && document.activeElement === firstElement) {
-      e.preventDefault();
-      lastElement.focus();
-    }
-    // Tab sur le dernier élément : aller au premier
-    else if (!e.shiftKey && document.activeElement === lastElement) {
-      e.preventDefault();
-      firstElement.focus();
-    }
-  }
-  
-  announceToScreenReader(message) {
-    // Créer une région live pour les annonces
-    let announcer = document.getElementById('modal-announcer');
-    if (!announcer) {
-      announcer = document.createElement('div');
-      announcer.id = 'modal-announcer';
-      announcer.setAttribute('role', 'status');
-      announcer.setAttribute('aria-live', 'polite');
-      announcer.setAttribute('aria-atomic', 'true');
-      announcer.style.position = 'absolute';
-      announcer.style.left = '-10000px';
-      announcer.style.width = '1px';
-      announcer.style.height = '1px';
-      announcer.style.overflow = 'hidden';
-      document.body.appendChild(announcer);
-    }
-    
-    announcer.textContent = message;
-    
-    // Nettoyer après 1 seconde
     setTimeout(() => {
-      announcer.textContent = '';
-    }, 1000);
+      this.closeBtn.focus();
+    }, 100);
   }
-  
-  calculateScrollbarWidth() {
-    // Calculer la largeur de la scrollbar pour éviter le jump
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+
+  close() {
+    this.modal.classList.remove('active');
+    document.body.style.overflow = '';
+    if (this.lastFocusedElement) this.lastFocusedElement.focus();
   }
 }
 
-// ============= INITIALISATION ============= 
+// ============= FONCTION D'INJECTION (FETCH) ============= 
+async function loadModalAndInit() {
+    try {
+        const placeholder = document.getElementById('modal-placeholder');
+        if (!placeholder) return; // Sécurité si l'élément n'existe pas sur une page
+
+        const response = await fetch('modale.html');
+        const html = await response.text();
+        placeholder.innerHTML = html;
+
+        // Une fois le HTML présent, on initialise la classe
+        const projectModal = new ProjectModal();
+
+        // On lie les boutons de détails à la modale
+        const detailButtons = document.querySelectorAll('.btn-detail');
+        detailButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // On récupère l'ID du projet (soit via data-id, soit via l'index)
+                const projectId = btn.getAttribute('data-project-id') || 1;
+                projectModal.open(projectId);
+            });
+        });
+
+    } catch (error) {
+        console.error("Erreur de chargement de la modale :", error);
+    }
+}
+
+// ============= INITIALISATION GLOBALE ============= 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialiser le système de modales
-  const modalSystem = new Modal();
-  
-  console.log('✅ Système de modales initialisé');
+  loadModalAndInit();
 });

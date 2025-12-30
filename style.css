@@ -276,6 +276,11 @@ section {
     height: var(--icon-size);
 }
 
+.icon:hover{
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
 .arrow {
     position: absolute;
     right: -5rem;
@@ -666,7 +671,7 @@ footer nav {
   color: var(--color-text);
   line-height: 1.8;
   margin: 0;
-  text-align: justify;
+  text-align: left;
 }
 
 /* Section Technologies */
