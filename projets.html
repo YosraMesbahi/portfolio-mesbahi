@@ -32,7 +32,8 @@
   </head>
 
   <body>
-    <nav id="desktop-nav">
+    <header>
+      <nav id="desktop-nav">
       <div>
         <a href="index.html" class="logo"> Yosra Mesbahi</a>
       </div>
@@ -45,7 +46,6 @@
         </ul>
       </div>
     </nav>
-
     <nav id="hamburger-nav">
       <div>
         <a href="index.html" class="logo"> Yosra Mesbahi</a>
@@ -57,15 +57,20 @@
           <span></span>
         </div>
         <div class="menu-links">
-          <li><a href="index.html#apropos" onclick="toggleMenu()">À propos</a></li>
-          <li><a href="index.html#competences" onclick="toggleMenu()">Compétences</a></li>
-          <li><a href="projets.html" onclick="toggleMenu()">Projets</a></li>
-          <li><a href="index.html#contact" onclick="toggleMenu()">Contact</a></li>
+          <ul>
+            <li><a href="index.html#apropos" onclick="toggleMenu()">À propos</a></li>
+            <li><a href="index.html#competences" onclick="toggleMenu()">Compétences</a></li>
+            <li><a href="projets.html" onclick="toggleMenu()">Projets</a></li>
+            <li><a href="index.html#contact" onclick="toggleMenu()">Contact</a></li>
+          </ul>
+          
         </div>
       </div>
     </nav>
-
-    <section id="all-projets">
+    </header>
+    
+<main id="main">
+   <section id="all-projets">
       <p class="section__text__p1">Découvrez</p>
       <h1 class="title">L'ensemble de mes projets</h1>
 
@@ -175,7 +180,7 @@
         </div>
       </div>
     </section>
-
+</main>
     <footer>
       <p>Copyright © 2025 Yosra Mesbahi. Tous droits réservés</p>
     </footer>
