@@ -130,7 +130,6 @@ class ProjectModal {
     this.lastFocusedElement = document.activeElement;
 
     // Remplissage des données
-    document.getElementById('modal-image').src = `./assets/project-${projectId}.png`;
     document.getElementById('modal-title').textContent = data.title;
     document.getElementById('modal-description').textContent = data.description;
     document.getElementById('modal-learnings').textContent = data.learnings;
