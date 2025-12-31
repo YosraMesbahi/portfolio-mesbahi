@@ -1,8 +1,14 @@
-function toggleMenu() {
-  const menu = document.querySelector(".menu-links");
-  const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
-  icon.classList.toggle("open");
+/* ========================= MENU HAMBURGER ========================= */
+
+function toggleMenu(event) {
+  const hamburgerMenu = event.currentTarget.closest('.hamburger-menu');
+  if (!hamburgerMenu) return;
+
+  const menu = hamburgerMenu.querySelector('.menu-links');
+  const icon = hamburgerMenu.querySelector('.hamburger-icon');
+
+  menu.classList.toggle('open');
+  icon.classList.toggle('open');
 }
 
 // ============= DONNÉES DES PROJETS ============= 
@@ -98,12 +104,10 @@ const projectsData = {
   }
 };
 
+/* ========================= MODALE PROJETS ========================= */
 
-
-// ============= CLASSE DE GESTION DE LA MODALE ============= 
 class ProjectModal {
   constructor() {
-    // Les éléments sont récupérés ici, APRES l'injection du HTML
     this.modal = document.getElementById('modal-container');
     this.closeBtn = this.modal.querySelector('.modal-close');
     this.backdrop = this.modal.querySelector('.modal-backdrop');
@@ -115,7 +119,7 @@ class ProjectModal {
   initEvents() {
     this.closeBtn.addEventListener('click', () => this.close());
     this.backdrop.addEventListener('click', () => this.close());
-    
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.modal.classList.contains('active')) {
         this.close();
@@ -129,67 +133,84 @@ class ProjectModal {
 
     this.lastFocusedElement = document.activeElement;
 
-    // Remplissage des données
     document.getElementById('modal-title').textContent = data.title;
     document.getElementById('modal-description').textContent = data.description;
     document.getElementById('modal-learnings').textContent = data.learnings;
-    document.getElementById('modal-github').href = data.github;
-    document.getElementById('modal-demo').href = data.demo;
 
-    // Badges technologies
+    document.getElementById('modal-github').href = data.github || "#";
+    document.getElementById('modal-demo').href = data.demo || "#";
+
     const techContainer = document.getElementById('modal-tech-badges');
-    techContainer.innerHTML = data.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
+    techContainer.innerHTML = data.technologies
+      .map(tech => `<span class="tech-badge">${tech}</span>`)
+      .join('');
 
-    // Liste des compétences
     const skillsList = document.getElementById('modal-skills-list');
-    skillsList.innerHTML = data.skills.map(skill => `<li>${skill}</li>`).join('');
+    skillsList.innerHTML = data.skills
+      .map(skill => `<li>${skill}</li>`)
+      .join('');
 
-    // Affichage
     this.modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    setTimeout(() => {
-      this.closeBtn.focus();
-    }, 100);
+    document.body.classList.add('modal-open');
+
+    this.closeBtn.focus();
   }
 
   close() {
     this.modal.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
     if (this.lastFocusedElement) this.lastFocusedElement.focus();
   }
 }
 
-// ============= FONCTION D'INJECTION (FETCH) ============= 
+/* ========================= CHARGEMENT DE LA MODALE ========================= */
+
 async function loadModalAndInit() {
-    try {
-        const placeholder = document.getElementById('modal-placeholder');
-        if (!placeholder) return; // Sécurité si l'élément n'existe pas sur une page
+  const placeholder = document.getElementById('modal-placeholder');
+  if (!placeholder) return;
 
-        const response = await fetch('modale.html');
-        const html = await response.text();
-        placeholder.innerHTML = html;
+  const response = await fetch('modale.html');
+  const html = await response.text();
+  placeholder.innerHTML = html;
 
-        // Une fois le HTML présent, on initialise la classe
-        const projectModal = new ProjectModal();
+  const projectModal = new ProjectModal();
 
-        // On lie les boutons de détails à la modale
-        const detailButtons = document.querySelectorAll('.btn-detail');
-        detailButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                // On récupère l'ID du projet (soit via data-id, soit via l'index)
-                const projectId = btn.getAttribute('data-project-id') || 1;
-                projectModal.open(projectId);
-            });
-        });
-
-    } catch (error) {
-        console.error("Erreur de chargement de la modale :", error);
-    }
+  document.querySelectorAll('.btn-detail').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const projectId = btn.getAttribute('data-project-id');
+      projectModal.open(projectId);
+    });
+  });
 }
 
-// ============= INITIALISATION GLOBALE ============= 
+/* ========================= INITIALISATION GLOBALE ========================= */
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Menu hamburger
+  document.querySelectorAll('.hamburger-icon').forEach(icon => {
+    icon.addEventListener('click', toggleMenu);
+  });
+
+  document.querySelectorAll('.menu-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      const hamburgerMenu = link.closest('.hamburger-menu');
+      if (!hamburgerMenu) return;
+
+      hamburgerMenu.querySelector('.menu-links').classList.remove('open');
+      hamburgerMenu.querySelector('.hamburger-icon').classList.remove('open');
+    });
+  });
+
+  // Modales projets
   loadModalAndInit();
+
+  // Bouton CV
+  const cvBtn = document.querySelector('[data-action="download-cv"]');
+  if (cvBtn) {
+    cvBtn.addEventListener('click', () => {
+      window.open('./assets/CV-MESBAHI.pdf', '_blank');
+    });
+  }
 });
