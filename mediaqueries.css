@@ -1,97 +1,502 @@
-@media screen and (max-width: 1400px){
-    #profile{
+/* ============= MEDIA QUERIES OPTIMISÉES ============= */
+
+/* ========== GRAND ÉCRAN (1400px et moins) ========== */
+@media screen and (max-width: 1400px) {
+    #profile {
         height: 83vh;
         margin-bottom: 6rem;
     }
-    .about-containers{
+    
+    .about-containers {
         flex-wrap: wrap;
     }
 }
 
-
-
-
-
-@media screen and (max-width: 1200px){
-    #desktop-nav{
+/* ========== DESKTOP MOYEN (1200px et moins) ========== */
+@media screen and (max-width: 1200px) {
+    /* Navigation */
+    #desktop-nav {
         display: none;
     }
-    #hamburger-nav{
+    
+    #hamburger-nav {
         display: flex;
     }
-    #experience, .experience-details-container{
-        margin-top: 2rem;
+    
+    /* Sections */
+    section {
+        margin: 0 7%;
     }
-    #profile, .section-container{
+    
+    #profile, .section-container {
         display: block;
     }
-    .arrow{
+    
+    .arrow {
         display: none;
     }
-    section, .section-container{
+    
+    section, .section-container {
         height: fit-content;
     }
-    section{
-        margin: 0 5%;
+    
+    #experience, .experience-details-container {
+        margin-top: 2rem;
     }
-    .section__pic-container{
+    
+    /* About section */
+    .section__pic-container {
         width: 275px;
         height: 275px;
         margin: 0 auto 2rem;
     }
-    .about-containers{
+    
+    .about-containers {
         margin-top: 0;
     }
 }
 
-@media screen and (max-width: 600px){
-    #contact, footer{
-        height: 40vh;
+/* ========== TABLETTE LARGE (992px et moins) ========== */
+@media screen and (max-width: 992px) {
+    /* Sections */
+    section {
+        margin: 0 5%;
     }
-    #profile{
-        height: 83vh;
-        margin-bottom: 0;
+    
+    /* Grid projets : passage à 2 colonnes */
+    #all-projets .details-container {
+        flex: 0 0 calc(50% - var(--gap-lg));
+        max-width: calc(50% - var(--gap-lg));
     }
-    article{
-        font-size: 1rem;
+    
+    /* Section projets page index : 3 cartes en 2-1 */
+    #projets .about-containers {
+        justify-content: flex-start;
     }
-    footer nav{
-        height: fit-content;
-        margin-bottom: 2rem;
+    
+    #projets .details-container {
+        flex: 0 0 calc(50% - var(--gap-lg));
+        max-width: calc(50% - var(--gap-lg));
+        min-width: calc(50% - var(--gap-lg));
     }
+    
+    /* Compétences */
+    .article-container {
+        gap: 2rem;
+    }
+    
+    article {
+        width: 9rem;
+    }
+    
+    /* About */
+    .about-containers {
+        gap: 1.5rem;
+    }
+}
 
-    .about-containers, .contact-info-upper-container, .btn-container{
-        flex-wrap: wrap;
+/* ========== TABLETTE (768px et moins) ========== */
+@media screen and (max-width: 768px) {
+    /* Typographie progressive */
+    .title {
+        font-size: 2.5rem;
     }
-    .contact-info-container{
-        margin: 0;
-    }
-    .contact-info-container , .nav-links li a {
-        font-size: 1rem;
-    }
-    .experience-sub-title{
-        font-size: 1.25rem ;
-    }
-    .logo{
+    
+    .section__text__p2 {
         font-size: 1.5rem;
     }
-    .nav-links{
+    
+    .logo {
+        font-size: 1.75rem;
+    }
+    
+    /* Sections */
+    section {
+        margin: 0 4%;
+        padding-top: 3vh;
+    }
+    
+    /* Profile */
+    #profile {
+        height: auto;
+        min-height: 70vh;
+        margin-bottom: 4rem;
+    }
+    
+    .section__text {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+    
+    /* Projets page index : passage à 1 colonne */
+    #projets .details-container {
+        flex: 0 0 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    #projets .about-containers {
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    /* Boutons */
+    .btn-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 12rem;
+    }
+    
+    /* Contact */
+    .contact-info-upper-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .contact-info-container {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+    
+    /* Compétences */
+    .experience-sub-title {
+        font-size: 1.5rem;
+    }
+    
+    .article-container {
+        gap: 1.5rem;
+        justify-content: center;
+    }
+}
+
+/* ========== MOBILE LARGE (600px et moins) ========== */
+@media screen and (max-width: 600px) {
+    /* Typographie */
+    .title {
+        font-size: 2rem;
+    }
+    
+    .section__text__p2 {
+        font-size: 1.25rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .experience-sub-title {
+        font-size: 1.25rem;
+    }
+    
+    .contact-info-container, .nav-links li a {
+        font-size: 1rem;
+    }
+    
+    /* Navigation */
+    .nav-links {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
     }
-    .section__pic-container{
+    
+    /* Sections */
+    section {
+        margin: 0 5%;
+    }
+    
+    #profile {
+        height: auto;
+        min-height: 75vh;
+        margin-bottom: 2rem;
+    }
+    
+    #contact, footer {
+        height: auto;
+        min-height: 40vh;
+    }
+    
+    footer nav {
+        height: fit-content;
+        margin-bottom: 2rem;
+    }
+    
+    /* Grid projets : 1 colonne sur mobile */
+    #all-projets .details-container,
+    #projets .details-container {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .about-containers, 
+    .contact-info-upper-container, 
+    .btn-container {
+        flex-wrap: wrap;
+    }
+    
+    .contact-info-container {
+        margin: 0;
+    }
+    
+    /* About */
+    .section__pic-container {
         width: auto;
         height: 46vw;
         justify-content: center;
     }
-    .section__text__p2{
-        font-size: 1.25rem;
-    }
-    .title{
-        font-size: 2rem;
-    }
-    .text-container{
+    
+    .text-container {
         text-align: justify;
+    }
+    
+    /* Compétences */
+    article {
+        width: 100%;
+        max-width: 10rem;
+        font-size: 1rem;
+    }
+    
+    /* Boutons */
+    .btn {
+        width: 100%;
+        max-width: 15rem;
+    }
+}
+
+/* ========== MOBILE MOYEN (480px et moins) ========== */
+@media screen and (max-width: 480px) {
+    /* Typographie */
+    .title {
+        font-size: 1.75rem;
+    }
+    
+    .section__text__p1 {
+        font-size: 0.95rem;
+    }
+    
+    .section__text__p2 {
+        font-size: 1.1rem;
+    }
+    
+    .experience-sub-title {
+        font-size: 1.15rem;
+    }
+    
+    /* Sections */
+    section {
+        margin: 0 4%;
+        padding-top: 2vh;
+    }
+    
+    #profile {
+        min-height: 70vh;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section__text {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+    
+    /* Navigation */
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    /* About */
+    .details-container {
+        padding: 1rem;
+    }
+    
+    .section__pic-container {
+        height: 50vw;
+        max-height: 250px;
+    }
+    
+    /* Compétences */
+    .article-container {
+        gap: 1rem;
+    }
+    
+    article {
+        width: 100%;
+        max-width: 8rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Projets */
+    .project-img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .project-title {
+        font-size: 1.1rem;
+        margin: 0.75rem;
+    }
+    
+    #voir-projet {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Contact */
+    .contact-info-container p {
+        font-size: 0.95rem;
+    }
+    
+    .email-icon {
+        height: 2rem;
+    }
+    
+    /* Icônes */
+    .icon {
+        height: 1.75rem;
+    }
+    
+    /* Espacements réduits */
+    .about-containers {
+        gap: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* ========== PETIT MOBILE (375px et moins) ========== */
+@media screen and (max-width: 375px) {
+    /* Typographie très compacte */
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .section__text__p2 {
+        font-size: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    /* Sections ultra-compactes */
+    section {
+        margin: 0 3%;
+    }
+    
+    .section__text {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Boutons */
+    .btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    /* About */
+    .details-container {
+        padding: 0.75rem;
+    }
+    
+    .section__pic-container {
+        height: 55vw;
+        max-height: 220px;
+    }
+    
+    /* Compétences */
+    article {
+        max-width: 7rem;
+        font-size: 0.85rem;
+    }
+    
+    .experience-sub-title {
+        font-size: 1rem;
+    }
+    
+    /* Contact */
+    .contact-info-upper-container {
+        padding: 1rem;
+    }
+    
+    .contact-info-container p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ========== OPTIMISATIONS SUPPLÉMENTAIRES ========== */
+
+/* Amélioration du menu hamburger sur toutes tailles */
+@media screen and (max-width: 1200px) {
+    .menu-links {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 1rem 1rem;
+        min-width: 200px;
+    }
+    
+    .menu-links a {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(163, 163, 163, 0.2);
+    }
+    
+    .menu-links a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Amélioration des transitions sur tous écrans */
+@media (prefers-reduced-motion: no-preference) {
+    .btn, .icon, .tech-badge {
+        transition: var(--transition-fast);
+    }
+}
+
+/* Mode paysage pour mobiles */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    #profile {
+        height: auto;
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
+    
+    .section__text {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    section {
+        padding-top: 2vh;
+        min-height: 100vh;
+    }
+}
+
+/* Accessibilité : focus visible amélioré sur tous écrans */
+@media screen and (max-width: 768px) {
+    a:focus-visible, 
+    button:focus-visible, 
+    .hamburger-icon:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+}
+
+/* Touch targets sur mobile (minimum 44x44px recommandé) */
+@media screen and (max-width: 600px) {
+    .btn, 
+    .menu-links a, 
+    .hamburger-icon {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .icon {
+        padding: 0.5rem;
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 }
