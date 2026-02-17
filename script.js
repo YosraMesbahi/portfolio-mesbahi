@@ -218,6 +218,23 @@ const projectsData = {
     ],
     github: null,
     demo: "https://www.figma.com/deck/HuF2S1gsYd6mkhH64yTohE"
+  },
+  13: {
+    title: "Motion design — Festival des Talents 2025",
+    type: "design",
+    description: "Pastille de communication post-événementielle réalisée en motion design à l'occasion du Festival des Talents 2025. Animation conçue pour être diffusée sur les réseaux sociaux afin de prolonger la visibilité de l'événement.",
+    technologies: ["After Effects"],
+    client: "Festival des Talents 2025",
+    problem: "Assurer la communication post-événementielle du Festival des Talents 2025 et prolonger son impact sur les réseaux sociaux.",
+    solution: "Création d'une pastille animée en motion design, rythmée et identitaire, optimisée pour une diffusion digitale.",
+    skills: [
+      "Conception et animation motion design",
+      "Storyboard et direction artistique",
+      "Montage et export pour réseaux sociaux",
+      "Communication post-événementielle"
+    ],
+    github: null,
+    demo: "https://mesbahi.alwaysdata.net/MESBAHI-Pastille-2.mp4",
   }
 };
 /* ========================= MODALE PROJETS ========================= */
@@ -319,6 +336,22 @@ class ProjectModal {
       } else {
         demoBtn.style.display = 'none';
       }
+    }
+
+    // Vidéo (motion design)
+    const existingVideo = document.getElementById('modal-video-wrapper');
+    if (existingVideo) existingVideo.remove();
+
+    if (data.video) {
+      const videoWrapper = document.createElement('div');
+      videoWrapper.id = 'modal-video-wrapper';
+      videoWrapper.style.cssText = 'margin: 1rem 0; text-align: center;';
+      videoWrapper.innerHTML = `
+        <video controls style="max-width:100%; border-radius: 0.75rem; max-height: 260px;">
+          <source src="${data.video}" type="video/mp4">
+        </video>`;
+      const descEl = document.getElementById('modal-description');
+      descEl.parentNode.insertBefore(videoWrapper, descEl.nextSibling);
     }
 
     // Afficher la modale
