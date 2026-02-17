@@ -387,6 +387,51 @@ article .icon {
     position: relative;
 }
 
+/* ---- Blocs Dev / Crea ---- */
+.competences-bloc {
+    margin-bottom: 2.5rem;
+}
+
+.competences-bloc-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.competences-bloc-tag {
+    display: inline-block;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+}
+
+.competences-bloc-tag--crea {
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+}
+
+.competences-bloc-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.competences-bloc .about-containers {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
+.competences-bloc + .competences-bloc {
+    border-top: var(--border-width) solid var(--color-border);
+    padding-top: 2rem;
+}
+
 .experience-sub-title {
     color: var(--color-text);
     font-weight: 600;

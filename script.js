@@ -163,6 +163,61 @@ const projectsData = {
     ],
     github: null,
     demo: "https://www.figma.com/deck/uC9xyIZBj1md3bf8xFEur3"
+  },
+  10: {
+    title: "Programme festival BD « Formule Bédé 10 »",
+    type: "design",
+    description: "Conception d'un livret de 42 pages au format A5 pour le festival de bande dessinée « Formule Bédé 10 » organisé par la structure culturelle fictive DixSept, du 27 au 29 septembre 2024.",
+    technologies: ["InDesign", "Illustrator", "Photoshop"],
+    client: "Structure culturelle fictive DixSept (Projet Académique – IUT de Cergy-Pontoise)",
+    problem: "Rendre la communication du festival plus lisible et dynamique en réenchantant l'identité graphique de la structure, tout en documentant et informant sur la programmation de l'événement.",
+    solution: "Création d'un livret print offset A5 de 42 pages (couverture 300g, intérieur 120g, relié piqué à cheval) intégrant chemin de fer, gabarit, foliotage, habillage texte–visuels et une typographie cohérente adaptée à la ligne éditoriale du commanditaire.",
+    skills: [
+      "Conception d'un chemin de fer et d'un gabarit de mise en page",
+      "Mise en page éditoriale print (InDesign)",
+      "Création et retouche de visuels (Illustrator, Photoshop)",
+      "Optimisation des médias pour l'impression offset (CMJN, fond perdu, traits de coupe)",
+      "Gestion typographique et règles typographiques",
+      "Assemblage et livraison d'un dossier natif complet (.IND, .IDML, Links, Fonts)"
+    ],
+    github: null,
+    demo: null
+  },
+  11: {
+    title: "Infographie BUT MMI",
+    type: "design",
+    description: "Création d'une infographie print personnelle présentant la formation BUT Métiers du Multimédia et de l'Internet (MMI) : structure, débouchés et parcours de spécialisation.",
+    technologies: ["Illustrator"],
+    client: "Projet personnel",
+    problem: "Synthétiser de façon claire et visuelle les informations clés de la formation BUT MMI pour un public de futurs étudiants.",
+    solution: "Composition d'une infographie structurée en 4 points clés avec une hiérarchie visuelle forte, une palette cohérente (jaune, rose, blanc) et une typographie lisible adaptée au format print.",
+    skills: [
+      "Conception graphique et mise en page print",
+      "Hiérarchie visuelle et structuration de l'information",
+      "Maîtrise d'Adobe Illustrator",
+      "Choix typographiques et colorimétrie",
+      "Synthèse et vulgarisation de contenu"
+    ],
+    github: null,
+    demo: "https://mesbahi.alwaysdata.net/MMI.png"
+  },
+  12: {
+    title: "Gestion d'une newsletter",
+    type: "design",
+    description: "Conception d'une stratégie éditoriale complète et rédaction d'une newsletter post-évènement à destination des étudiants ambassadeurs de la JPO IUT Cergy-Pontoise 2026.",
+    technologies: ["Figma"],
+    client: "Projet personnel",
+    problem: "Maintenir le lien avec les étudiants ambassadeurs après la Journée Portes Ouvertes du 7 février 2026, les remercier pour leur engagement et les fidéliser pour les éditions à venir.",
+    solution: "Élaboration d'une stratégie éditoriale complète, rédaction de deux articles structurés et conception d'un footer CTA avec appels à l'action multicanaux.",
+    skills: [
+      "Définition d'une stratégie et d'une ligne éditoriale",
+      "Analyse de cible et définition des objectifs de communication",
+      "Rédaction d'articles de communication interne",
+      "Gestion de l'information digitale",
+      "Conception de calls-to-action et de parcours de fidélisation",
+    ],
+    github: null,
+    demo: "https://www.figma.com/deck/HuF2S1gsYd6mkhH64yTohE"
   }
 };
 /* ========================= MODALE PROJETS ========================= */
