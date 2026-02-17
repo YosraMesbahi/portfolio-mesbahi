@@ -46,15 +46,14 @@ const projectsData = {
     demo: "https://glowcom.alwaysdata.net/SAE-203/DanYellow-cours-main-integration/code/index.php"
   },
     3: {
-    title: "Campagne visuelle M&M's",
+    title: "Campagne visuelle fictive pour M&M's",
     type: "design",
-    description: "Création de supports de communication visuelle pour le lancement d'un nouveau produit M&M's.",
-    technologies: ["Photoshop"],
+    description: "Création de supports de communication visuelle pour le lancement d'un nouveau produit fictif M&M's.",
+    technologies: ["Photoshop", "Illustrator"],
     client: "Projet Académique (IUT)",
     problem: "Promouvoir un nouveau produit en respectant l'identité visuelle forte de la marque M&M's.",
-    solution: "Conception de visuels publicitaires (post Instagram, affiche) mettant en avant le produit via du compositing et de la retouche avancée.",
+    solution: "Conception de visuels publicitaires (post Instagram, affiche) mettant en avant le produit.",
     skills: [
-      "Retouche d'image et colorimétrie",
       "Composition et mise en page publicitaire",
       "Respect d'une charte graphique",
       "Préparation de fichiers pour le web et le print"
@@ -151,20 +150,19 @@ const projectsData = {
   9: {
     title: "Stratégie de communication",
     type: "design",
-    description: "Élaboration d'une stratégie de communication plurimédia complète pour promouvoir une marque ou un produit sur les canaux digitaux.",
-    technologies: ["Figma", "Marketing Digital"],
+    description: "Élaboration d'une stratégie de communication complète pour promouvoir la diffusion d'un webdocumentaire sur le métier de copywriter.",
+    technologies: ["Figma"],
     client: "Projet Académique (IUT de Cergy-Pontoise)",
-    problem: "Concevoir une stratégie cohérente pour toucher efficacement une cible sur différents supports digitaux.",
-    solution: "Définition d'une stratégie multicanale incluant analyse de cible, tone of voice, planning éditorial et création de contenus adaptés à chaque plateforme.",
+    problem: "Concevoir une stratégie cohérente pour toucher efficacement une cible sur un support précis.",
+    solution: "Définition d'une stratégie incluant analyse de cible, planning éditorial et création de contenus adaptée à la plateforme LinkedIn.",
     skills: [
-      "Analyse de cible et personas",
+      "Analyse de cible",
       "Définition d'axes de communication",
-      "Planning éditorial multicanal",
-      "Création de contenus adaptés (réseaux sociaux, web)",
-      "Cohérence de la stratégie plurimédia"
+      "Planning éditorial",
+      "Création de contenus adaptés",
     ],
     github: null,
-    demo: "https://www.figma.com/deck/uC9xyIZBj1md3bf8xFEur3/Strat%C3%A9gie-de-Communication-Plurim%C3%A9dia?node-id=1-447&t=YJrRIeAFV4XfyXXp-1"
+    demo: "https://www.figma.com/deck/uC9xyIZBj1md3bf8xFEur3"
   }
 };
 /* ========================= MODALE PROJETS ========================= */
